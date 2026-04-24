@@ -22,13 +22,44 @@ jobs:
         with:
           node-version: 'lts/*'
 
-      - name: Check 
-        run: |
-          git --version
+      - name: Git --version
+        run: git --version
 
+      - name: Check without TURBO_SCM_BASE
+        run: |
           if npx --yes turbo@2.9.6 query affected --tasks build --exit-code; then
             echo "Nothing to do"
           else
             echo "We have some work to do"
           fi
 
+      - name: Check with TURBO_SCM_BASE
+        env:
+          TURBO_SCM_BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if npx --yes turbo@2.9.6 query affected --tasks build --exit-code; then
+            echo "Nothing to do"
+          else
+            echo "We have some work to do"
+          fi
+
+      - name: Creating branch "main"
+        run: git branch main origin/main
+
+      - name: Check without TURBO_SCM_BASE
+        run: |
+          if npx --yes turbo@2.9.6 query affected --tasks build --exit-code; then
+            echo "Nothing to do"
+          else
+            echo "We have some work to do"
+          fi
+
+      - name: Check with TURBO_SCM_BASE
+        env:
+          TURBO_SCM_BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if npx --yes turbo@2.9.6 query affected --tasks build --exit-code; then
+            echo "Nothing to do"
+          else
+            echo "We have some work to do"
+          fi
