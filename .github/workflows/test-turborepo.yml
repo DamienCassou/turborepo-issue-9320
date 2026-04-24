@@ -27,8 +27,14 @@ jobs:
         with:
           node-version: 'lts/*'
 
-      - name: Git --version
+      - name: Git version
         run: git --version
+
+      - name: Turborepo version
+        run: turbo@${{matrix.turboversion}} --version
+
+      - name: Turborepo info
+        run: turbo@${{matrix.turboversion}} info
 
       - name: Check without TURBO_SCM_BASE
         run: |
