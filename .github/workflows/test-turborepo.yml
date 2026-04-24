@@ -31,10 +31,10 @@ jobs:
         run: git --version
 
       - name: Turborepo version
-        run: turbo@${{matrix.turboversion}} --version
+        run: npx --yes turbo@${{matrix.turboversion}} --version
 
       - name: Turborepo info
-        run: turbo@${{matrix.turboversion}} info
+        run: npx --yes turbo@${{matrix.turboversion}} info
 
       - name: Check without TURBO_SCM_BASE
         run: |
