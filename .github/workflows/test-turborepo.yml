@@ -55,7 +55,7 @@ jobs:
           fi
 
       - name: Creating branch "main"
-        run: git branch ${{ github.ref_base }} origin/${{ github.ref_base }}
+        run: git branch ${{ github.base_ref }} origin/${{ github.base_ref }}
 
       - name: Check without TURBO_SCM_BASE
         run: |
