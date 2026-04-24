@@ -32,7 +32,7 @@ jobs:
 
       - name: Check without TURBO_SCM_BASE
         run: |
-          if npx --yes turbo@${matrix.turboversion} query affected --tasks build --exit-code; then
+          if npx --yes turbo@${{matrix.turboversion}} query affected --tasks build --exit-code; then
             echo "Nothing to do"
           else
             echo "We have some work to do"
@@ -42,7 +42,7 @@ jobs:
         env:
           TURBO_SCM_BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: |
-          if npx --yes turbo@${matrix.turboversion} query affected --tasks build --exit-code; then
+          if npx --yes turbo@${{matrix.turboversion}} query affected --tasks build --exit-code; then
             echo "Nothing to do"
           else
             echo "We have some work to do"
@@ -53,7 +53,7 @@ jobs:
 
       - name: Check without TURBO_SCM_BASE
         run: |
-          if npx --yes turbo@${matrix.turboversion} query affected --tasks build --exit-code; then
+          if npx --yes turbo@${{matrix.turboversion}} query affected --tasks build --exit-code; then
             echo "Nothing to do"
           else
             echo "We have some work to do"
@@ -63,7 +63,7 @@ jobs:
         env:
           TURBO_SCM_BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: |
-          if npx --yes turbo@${matrix.turboversion} query affected --tasks build --exit-code; then
+          if npx --yes turbo@${{matrix.turboversion}} query affected --tasks build --exit-code; then
             echo "Nothing to do"
           else
             echo "We have some work to do"
