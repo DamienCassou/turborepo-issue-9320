@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        turboversion: [2.9.6, canary]
+        turboversion: [2.9.12, canary]
 
     steps:
       - uses: actions/checkout@v6
